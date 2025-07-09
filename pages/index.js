@@ -29,17 +29,17 @@ export default function Home() {
         (pos) => {
           setPosition({
             lat: pos.coords.latitude,
-            lng: pos.coords.longitude,
+            lon: pos.coords.longitude,
           });
         },
         (err) => {
           console.error(err);
           setError('Géolocalisation refusée. Position par défaut.');
-          setPosition({ lat: -22.2758, lng: 166.4580 });
+          setPosition({ lat: -22.2758, lon: 166.4580 });
         }
       );
     } else {
-      setPosition({ lat: -22.2758, lng: 166.4580 });
+      setPosition({ lat: -22.2758, lon: 166.4580 });
     }
   }, []);
 
@@ -51,7 +51,7 @@ export default function Home() {
 
   return (
     <main style={{ padding: '2rem' }}>
-      <h1>Bienvenue sur OPT-NC</h1>
+      <h1>L'OPT près de chez moi, trouver une agence</h1>
 
       <label htmlFor="service">Choisissez un service :</label>
       <select
@@ -60,11 +60,18 @@ export default function Home() {
         onChange={(e) => setService(e.target.value)}
         style={{ margin: '1rem', padding: '0.5rem' }}
       >
-        <option value="">-- Tous les services --</option>
-        <option value="courrier">Courrier</option>
-        <option value="banque">Banque</option>
-        <option value="colis">Colis</option>
-        <option value="téléphonie">Téléphonie</option>
+        <option value="">---Tout les services---</option>
+        <optgroup label="Conseillers">
+          <option value="c_telecom">Télécom</option>
+          <option value="c_financier">Financier</option>
+        </optgroup>
+        <optgroup label="Guichets">
+          <option value="billets">Billets</option>
+          <option value="dedouanement">Dédouanement</option>
+          <option value="d_cheques">Dépôt chèques</option>
+          <option value="r_colis">Retrait colis</option>
+        </optgroup>
+        <option value="bp">Boîtes postales</option>
       </select>
 
       {error && <p style={{ color: 'red' }}>{error}</p>}
