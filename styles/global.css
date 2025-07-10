@@ -35,3 +35,19 @@ img {
   max-width: 100%;
   display: block;
 }
+
+h1 {
+  border-left: 6px solid blue;
+  padding-left: 2rem;
+}
+
+main {
+  padding-left:10rem;
+  padding-right:10rem;
+  padding-bottom:10rem;
+  padding-top:5rem;
+}
+
+h2 {
+  color: gray;
+}
