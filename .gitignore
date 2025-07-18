@@ -23,8 +23,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# local env files
+# .gitignore
 .env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env
+.env.*  # Ignore aussi .env.production etc.

@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "trouver-agence-opt",
-  "version": "0.3",
+  "version": "1.0",
   "scripts": {
     "build": "next build",
     "dev": "next dev",
