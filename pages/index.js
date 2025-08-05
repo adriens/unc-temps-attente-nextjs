@@ -1,14 +1,17 @@
 import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
+import Head from 'next/head';
 import Image from 'next/image';
 
 const CarteLeaflet = dynamic(() => import('../components/CarteLeaflet'), { ssr: false });
 
 export default function Home() {
   const [agences, setAgences] = useState([]);
-  const [position, setPosition] = useState(null);
+  const [position, setPosition] = useState([-22.2758, 166.4580]);
   const [userPosition, setUserPosition] = useState(null); // position initiale de l’utilisateur
   const [selectedAgence, setSelectedAgence] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [suggestions, setSuggestions] = useState([]);
   const [error, setError] = useState('');
 
   function getDistance(lat1, lon1, lat2, lon2) {
@@ -40,6 +43,20 @@ export default function Home() {
     };
 
     fetchAgences();
+  }, []);
+
+  useEffect(() => {
+    const fetchAddress = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch(`/api/reverse-geocode?lat=${lat}&lon=${lon}`);
+      const data = await res.json();
+      setAddress(data.address || 'Adresse non trouvée');
+    } catch (err) {
+      setAddress('Erreur de récupération');
+    }
+    setLoading(false);
+  };
   }, []);
 
   // Géolocalisation utilisateur → stockée à part
@@ -106,44 +123,93 @@ export default function Home() {
     }
   }, [userPosition, agencesFiltrees]);
 
-  return (
-    <main>
-      <h1>
-      <Image
-        priority
-        src="/images/opt_logo.svg"
-        height={98}
-        width={310}
-        alt="Logo OPT-nc"
-      />L'OPT près de chez moi, trouver une agence
-      </h1>
-      <h2>
-        Trouvez votre agence OPT la plus proche en fonction de votre géolocalisation ! (Vous êtes le point vert)
-      </h2>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      {position &&
-      typeof position.lat === 'number' &&
-      typeof position.lng === 'number' ? (
-        <div style={{ position: 'relative', height: '80vh', width: '100%' }}>
-          {selectedAgence && (
-            <aside>
-              <h2>{selectedAgence.designation}</h2>
-              <p><strong>Commune :</strong> {selectedAgence.commune}</p>
-              {/* Ajouter d'autres infos ici */}
-              <button onClick={() => setSelectedAgence(null)}>Fermer</button>
-            </aside>
-          )}
-          <CarteLeaflet
-            agences={agencesFiltrees}
-            position={position}
-            onSelectAgence={setSelectedAgence}
-          />
-        </div>
-      ) : (
-        <p>Chargement position…</p>
-      )}
+  const handleSearchChange = (e) => {
+    const value = e.target.value;
+    setSearchTerm(value);
+    if (value.length > 1) {
+      const filtered = agences.filter((a) =>
+        a.designation?.toLowerCase().includes(value.toLowerCase())
+      );
+      setSuggestions(filtered);
+    } else {
+      setSuggestions([]);
+    }
+  };
 
-      
-    </main>
+  const handleSearchKeyDown = (e) => {
+    if (e.key === 'Enter' && suggestions.length > 0) {
+      const first = suggestions[0];
+      handleAgenceSelect(first);
+    }
+  };
+
+  const handleAgenceSelect = (agence) => {
+    setSelectedAgence(agence);
+    setSearchTerm(agence.designation);
+    setSuggestions([]);
+
+    if (agence?.position?.lat && agence?.position?.lon) {
+      setUserPosition([agence.position.lat, agence.position.lon]);
+    }
+  };
+
+  return (
+    <>
+      <Head>
+        <title>L'OPT près de chez moi, trouver une agence</title>
+      </Head>
+
+      <main className="app-container">
+        <h1>
+        <Image
+          priority
+          src="/images/opt_logo.svg"
+          height={98}
+          width={310}
+          alt="Logo OPT-nc"
+        />L'OPT près de chez moi, trouver une agence
+        </h1>
+        <h2>
+          Trouvez votre agence OPT la plus proche en fonction de votre géolocalisation ! (Vous êtes le point vert)
+        </h2>
+
+        <header className="search-header">
+          <input
+            type="text"
+            placeholder="Rechercher une agence..."
+            value={searchTerm}
+            onChange={handleSearchChange}
+            onKeyDown={handleSearchKeyDown}
+            className="search-input"
+          />
+          {suggestions.length > 0 && (
+            <ul className="search-suggestions">
+              {suggestions.map((a) => (
+                <li
+                  key={a.idAgence}
+                  onClick={() => handleAgenceSelect(a)}
+                >
+                  {a.designation}
+                </li>
+              ))}
+            </ul>
+          )}
+        </header>
+
+
+          <div className="map-wrapper">
+            <CarteLeaflet
+              agences={agencesFiltrees}
+              userPosition={userPosition}
+              position={position}
+              selectedAgence={selectedAgence}
+              onSelectAgence={setSelectedAgence}
+            />
+          </div>
+
+
+        
+      </main>
+    </>
   );
 }
