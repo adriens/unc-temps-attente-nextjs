@@ -157,6 +157,7 @@ button {
 /* -------- MAP -------- */
 
 .map-wrapper {
+  position: relative;
   flex: 1;
 }
 
