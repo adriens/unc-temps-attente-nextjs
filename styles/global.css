@@ -18,6 +18,8 @@ body {
     sans-serif;
   line-height: 1.6;
   font-size: 18px;
+  height: 100%; 
+  overflow-x: hidden; 
 }
 
 * {
@@ -89,7 +91,10 @@ aside,
   user-select: text;
   cursor: text;
   pointer-events: auto;
+  max-height: 100vh;
 }
+
+/* -------- ANIMATION -------- */
 
 @keyframes myAnim {
 	0% {
@@ -188,5 +193,19 @@ button {
     border: none;
     border-top: 2px solid #ccc;
     padding: 1rem;
+    max-height: 40vh;
+  }
+
+  .map-wrapper {
+    height: 60vh; 
+  }
+
+  p {
+    font-size: 0.9rem; 
+  }
+
+  button {
+    width: 100%;
+    font-size: 1rem;
   }
 }
