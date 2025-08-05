@@ -167,6 +167,8 @@ button {
 
 /* -------- RESPONSIVE -------- */
 
+
+/* -------- Mobile format portrait -------- */
 @media (max-width: 768px) {
   html,
   body {
@@ -220,3 +222,55 @@ button {
     font-size: 1rem;
   }
 }
+
+/* -------- Mobile format paysage -------- */
+
+@media (max-width: 767px) and (orientation: landscape) {
+  .map-wrapper {
+    height: 50vh;
+  }
+
+  .sidebar {
+    max-height: 50vh;
+    font-size: 0.9rem;
+    padding: 0.75rem;
+  }
+
+  .search-header {
+    padding: 0.5rem;
+  }
+
+  .search-input {
+    font-size: 0.9rem;
+    padding: 0.4rem;
+  }
+
+  button {
+    font-size: 0.9rem;
+    padding: 0.4rem;
+  }
+}
+
+/* -------- Tablette -------- */
+
+@media (max-width: 1024px) {
+  main {
+    padding: 2rem;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+    padding-left: 1rem;
+  }
+
+  .sidebar {
+    width: 18rem;
+  }
+
+  .search-input {
+    font-size: 1rem;
+    max-width: 90%;
+  }
+}
+
+
