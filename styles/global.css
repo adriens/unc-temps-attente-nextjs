@@ -147,7 +147,8 @@ aside,
 }
 
 .search-suggestions li.active {
-  background-color: #e6f0ff;
+  background-color: #0070f3;
+  color: white;
   font-weight: bold;
 }
 

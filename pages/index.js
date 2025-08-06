@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Image from 'next/image';
+import { useRef } from 'react';
+
 
 const CarteLeaflet = dynamic(() => import('../components/CarteLeaflet'), { ssr: false });
 
@@ -13,6 +15,7 @@ export default function Home() {
   const [searchTerm, setSearchTerm] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const [selectedIndex, setSelectedIndex] = useState(-1);
+  const suggestionRefs = useRef([]);
   const [error, setError] = useState('');
 
   function getDistance(lat1, lon1, lat2, lon2) {
@@ -192,6 +195,18 @@ export default function Home() {
       fetchAdresse();
     }, [selectedAgence]);
 
+    useEffect(() => {
+      if (
+        selectedIndex >= 0 &&
+        suggestionRefs.current[selectedIndex]
+      ) {
+        suggestionRefs.current[selectedIndex].scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
+        });
+      }
+    }, [selectedIndex]);
+
   // 📞 Mapping des téléphones par agence
   const telephonesAgences = {
     "Agence de NOUMEA SUD": "26.86.50",
@@ -335,17 +350,20 @@ export default function Home() {
             onKeyDown={(e) => {
               if (e.key === 'ArrowDown') {
                 e.preventDefault();
-                setSelectedIndex((prev) => (prev + 1) % suggestions.length);
+                setSelectedIndex((prev) => {
+                  const next = prev + 1;
+                  return next >= suggestions.length ? suggestions.length - 1 : next;
+                });
               } else if (e.key === 'ArrowUp') {
                 e.preventDefault();
-                setSelectedIndex((prev) =>
-                  prev <= 0 ? suggestions.length - 1 : prev - 1
-                );
+                setSelectedIndex((prev) => {
+                  const next = prev - 1;
+                  return next < 0 ? 0 : next;
+                });
               } else if (e.key === 'Enter') {
                 e.preventDefault();
                 if (selectedIndex >= 0 && selectedIndex < suggestions.length) {
-                  const selected = suggestions[selectedIndex];
-                  handleAgenceSelect(selected); // déclenche le centrage + sidebar
+                  handleAgenceSelect(suggestions[selectedIndex]);
                 }
               }
             }}
@@ -357,6 +375,7 @@ export default function Home() {
                   key={a.idAgence}
                   className={index === selectedIndex ? 'active' : ''}
                   onMouseDown={() => handleAgenceSelect(a)}
+                  ref={(el) => (suggestionRefs.current[index] = el)}
                 >
                   {a.designation}
                 </li>
