@@ -18,8 +18,8 @@ body
     Droid Sans,
     Helvetica Neue,
     sans-serif;
-  line-height: 1.6;
-  font-size: 18px; 
+  line-height: 1.8;
+  font-size: 16px; 
   overflow-x: hidden; 
 }
 
@@ -43,7 +43,7 @@ img {
 
 p {
   background-color: lightblue;
-  padding : 1rem;
+  padding : 0.5rem;
   border-radius : 1rem;
 }
 
@@ -51,7 +51,7 @@ p {
 
 h1 {
   border-left: 6px solid blue;
-  padding-left: 2rem;
+  padding-left: 1rem;
 }
 
 h2 {
@@ -61,10 +61,10 @@ h2 {
 /* -------- MAIN LAYOUT -------- */
 
 main {
-  padding-left: 10rem;
-  padding-right: 10rem;
-  padding-bottom: 10rem;
-  padding-top: 5rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
 }
 
 main.app-container {
@@ -80,7 +80,7 @@ aside,
   position: absolute;
   top: 0;
   left: 0;
-  width: 20rem;
+  width: 33%;
   height: 100%;
   background: white;
   border: 6px solid #ccc;
@@ -146,6 +146,11 @@ aside,
   border-bottom: 1px solid #eee;
 }
 
+.search-suggestions li.active {
+  background-color: #e6f0ff;
+  font-weight: bold;
+}
+
 button {
   padding : 0.5rem;
   color : blue;
@@ -166,6 +171,7 @@ button {
 .leaflet-container {
   z-index: 0;
 }
+
 
 /* -------- RESPONSIVE -------- */
 
@@ -217,6 +223,11 @@ button {
     min-height: 300px;
   }
 
+  main.app-container {
+    height: 1260px;
+    display: flex;
+    flex-direction: column;
+  }
 
   p {
     font-size: 0.9rem; 
@@ -231,16 +242,39 @@ button {
 /* -------- Mobile format paysage -------- */
 
 @media (max-width: 767px) and (orientation: landscape) {
+  html,
+  body
+  #__next {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-family:
+      -apple-system,
+      BlinkMacSystemFont,
+      Segoe UI,
+      Roboto,
+      Oxygen,
+      Ubuntu,
+      Cantarell,
+      Fira Sans,
+      Droid Sans,
+      Helvetica Neue,
+      sans-serif;
+    line-height: 1.4;
+    font-size: 16px; 
+    overflow-x: hidden; 
+  }
   .map-wrapper {
     flex-grow: 1;
     height: auto;
     min-height: 300px;
+    max-height: 100vh;
   }
 
   .sidebar {
-    max-height: 50vh;
+    max-height: 100vh;
     font-size: 0.9rem;
-    padding: 0.75rem;
+    padding: 0.5rem;
   }
 
   .search-header {
@@ -255,6 +289,12 @@ button {
   button {
     font-size: 0.9rem;
     padding: 0.4rem;
+  }
+
+  main.app-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
   }
 }
 
