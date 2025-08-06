@@ -356,7 +356,6 @@ export default function Home() {
                 <p><strong>Adresse : </strong><span>{adresse || "Chargement..."}</span><br/></p>
                 <p><strong>Tél : </strong><span>{telephonesAgences[selectedAgence.designation] || "Non disponible"}</span></p>
                 <p><strong>E-mail : </strong><span>{emailAgences[selectedAgence.designation] || "Non disponible"}</span></p>
-                <p><strong>Temps d'attente estimé : </strong>{selectedAgence.estimatedAvgWaitingTimeMs/1000}s</p>
 
                 <h2>Horaires</h2>
                 <p><strong>Lundi à Vendredi : </strong>07:45 - 15:30</p>
