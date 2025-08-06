@@ -383,7 +383,7 @@ export default function Home() {
                 <p><strong>Boîtes postales</strong></p>
                 <p><strong>Conseillers</strong></p>
                 <p><strong>Guichets automatique de billets</strong></p>
-
+                <p><strong>Guichets Spécialisés</strong></p>
 
                 <button onClick={() => setSelectedAgence(null)}>Fermer</button>
               </aside>
