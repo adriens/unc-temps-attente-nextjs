@@ -1,9 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Image from 'next/image';
-import { useRef } from 'react';
-
 
 const CarteLeaflet = dynamic(() => import('../components/CarteLeaflet'), { ssr: false });
 
@@ -17,6 +15,8 @@ export default function Home() {
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const suggestionRefs = useRef([]);
   const [error, setError] = useState('');
+  const searchInputRef = useRef(null);
+
 
   function getDistance(lat1, lon1, lat2, lon2) {
     const R = 6371;
@@ -207,6 +207,13 @@ export default function Home() {
       }
     }, [selectedIndex]);
 
+    useEffect(() => {
+      if (searchInputRef.current) {
+        searchInputRef.current.focus();
+      }
+    }, []);
+
+
   // 📞 Mapping des téléphones par agence
   const telephonesAgences = {
     "Agence de NOUMEA SUD": "26.86.50",
@@ -342,6 +349,7 @@ export default function Home() {
 
         <header className="search-header">
           <input
+            ref={searchInputRef}
             type="text"
             className="search-input"
             placeholder="Rechercher une agence OPT..."
