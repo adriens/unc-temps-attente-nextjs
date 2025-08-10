@@ -1,0 +1,418 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{setspace}
+\usepackage{titlesec}
+
+\geometry{margin=2.5cm}
+\setstretch{1.3}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue
+}
+
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries}{\thechapter}{20pt}{\Huge}
+
+\begin{document}
+
+% =====================
+% PAGE DE GARDE
+\begin{titlepage}
+\centering
+{\Huge\bfseries Rapport de stage \par}
+\vspace{1cm}
+{\Large Développeur web front-end \par}
+\vspace{1cm}
+{\Large L’Office des Postes et Télécommunications (OPT-NC) \par}
+\vfill
+\textbf{Réalisé par :} Quoc-Kim BUI \\
+\textbf{Période :} 01/07/2025 – 01/09/2025 \\
+\textbf{Lieu :} Nouméa, Nouvelle-Calédonie
+\vfill
+\includegraphics[width=0.3\textwidth]{ressources_rapport/logo_opt.jpg}
+\vfill
+\textbf{Maître de stage :} Adrien SALES \\
+\textbf{Professeur tuteur :} Loïc SALMON
+\end{titlepage}
+
+% =====================
+% REMERCIEMENTS
+\chapter*{Remerciements}
+Loïc SALMON : Professeur tuteur de l'UNC
+
+\vspace{1cm}
+Claire LESCHI : Responsable pédagogique de la licence MIAGE
+
+\vspace{1cm}
+Adrien SALES : Maître de stage
+
+\newpage
+
+% =====================
+% TABLE DES MATIÈRES
+\tableofcontents
+\newpage
+
+% =====================
+\chapter{Introduction}
+\section{Contexte du stage}
+J'ai décidé d'effectuer un stage de deux mois en développement web front-end au sein de la direction des systèmes d’information de l’OPT-NC. Ce stage avait pour objectif principal de contribuer à la modernisation d’une application web interne et publique : \textit{"L'OPT près de chez moi, trouver une agence"}.
+
+\vspace{1cm}
+Avant de m'intéresser à ce stage, j'avais auparavant contacté OPEN-NC (cluster des entreprises du développement numérique) début avril dans l'optique de faire un stage dans le déveoppement web pour mettre en avant mes compétences dans ce domaine qui ont été forgées grâce à mon DUT MMI et ma Licence MIAGE. OPEN-NC a bel et bien partagé ma demande de recherche de stage à ses entreprises partenaires (plus de 90 entreprises), mais sans succès car je n'ai eu acune réponse de leur part.
+
+\vspace{1cm}
+J'ai donc signalé mon problème de recherche de stage à l'équipe pédagogique de la licence MIAGE. M. Loïc SALMON m'a répondu qu'il avait un contact de l'OPT qui pourrait prendre des stagiaires : M. Adrien SALES. Par conséquent, je lui avais directement envoyé mon CV et il m'a pris en tant que stagiaire en développement web front-end.
+
+\vspace{1cm}
+Mon stage était d'une durée de 8 semaines, du 1er Juillet 2025 jusqu'au 1er Septembre 2025. Il a été réalisé en distanciel car manque de poste sur place, donc on a utilisé LinkedIn et GitHub pour communiquer.
+
+
+\section{OPT en bref}
+L’Office des Postes et Télécommunications de Nouvelle-Calédonie (OPT-NC) est un établissement public à caractère industriel et commercial fondé en décembre 1956, puis mis en service le 1er janvier 1958. C'est l’acteur principal des services postaux, bancaires et télécoms sur le territoire calédonien. Fort de son statut de monopole sur certaines activités stratégiques, il joue un rôle essentiel dans la gestion et l'entretien du réseau calédonien.
+
+\vspace{1cm}
+
+\begin{figure}[h] % h = here (placer l'image ici)
+    \centering
+    \includegraphics[width=0.7\textwidth]{ressources_rapport/pose-cable-gondwana.jpg}
+    \caption{Posage du premier câble à fibres optiques sous-marin international - GONDWANA entre Nouméa et Sydney par l'OPT}
+    \label{fig:exemple}
+\end{figure}
+\newpage
+
+\section{Problématique et missions}
+L’application \textit{"L'OPT près de chez moi, trouver une agence"} permet aux usagers de localiser les agences OPT et de consulter leurs informations. Cependant, son interface front-end, vieillissante, nécessitait une refonte pour améliorer l’expérience utilisateur afin d'accéder à l'information souhaitée rapidement. On peut donc ce poser cette question :
+
+\vspace{1cm}
+
+\textit{"En quoi faire appel à un étudiant en Licence Informatique MIAGE est un choix pertinent pour moderniser le front-end d'une application web de l'OPT afin de faciliter et rendre plus agréable l'expérience utilisateur pour la recherche d'une agence et ses informations ?"}
+
+\vspace{1cm}
+Mes missions pour répondre à cette problématique sont les suivantes :  
+\begin{itemize}
+    \item Me familiariser avec l’écosystème technique (Next.js, React, Leaflet, GitHub)
+    \item Moderniser l’interface graphique et améliorer l’ergonomie
+    \item Intégrer de nouvelles fonctionnalités de recherche et de géolocalisation
+\end{itemize}
+\newpage
+
+\section{Annonce du plan}
+\begin{figure}[h] % h = here (placer l'image ici)
+    \centering
+    \includegraphics[width=0.2\textwidth]{ressources_rapport/logo_opt.jpg}
+\end{figure}
+Ce rapport présente dans un premier temps l’OPT et son rôle en Nouvelle-Calédonie en tant que monopôle du réseau calédonien. Je présenterai les enjeux de l'entreprise, le service dans lequel j'ai effectué mes missions, et une analyse de l'existant de l'OPT.
+
+\vspace{1cm}
+\begin{figure}[h] % h = here (placer l'image ici)
+    \centering
+    \includegraphics[width=0.2\textwidth]{ressources_rapport/app_web.png}
+\end{figure}
+Puis dans un second temps, il détaille les étapes de refonte de l’application. J'y parlerai de mon apprentissage de Next.js et de GitHub pour pouvoir proposer une application web moderne de manière collaborative.
+
+\vspace{1cm}
+\begin{figure}[h] % h = here (placer l'image ici)
+    \centering
+    \includegraphics[width=0.2\textwidth]{ressources_rapport/perspectives.png}
+\end{figure}
+Enfin, il propose une conclusion sur les résultats obtenus et les perspectives futures tels que la maintenabilité et l'évolutivité du front-end web.
+
+% =====================
+\chapter{L'OPT, le monopôle télécom et courrier calédonien}
+\section{Un incontournable du réseau de communication en Nouvelle-Calédonie}
+Les domaines d'activités de l'OPT-NC sont essentiels au réseau de communication calédonien :
+
+\vspace{0.5cm}
+
+\begin{itemize}
+    \item Le traitement du courrier en Nouvelle-Calédonie dont l'entretien et la gestion des agences et du réseau postal.
+    \item Les services financiers (CCP, CCNE)
+    \item Les télécommunications, c'est-à-dire la gestion et l'entretien du réseau internet et téléphonique, analogique ou numérique.
+    \item La gestion et la publication de l'annuaire et du service de renseignement (1012.nc)
+    \item La commercialisation de l'ADSL et de la fibre optique pour l'accès à Internet.
+    \item La gestion des noms de domaine .nc depuis le 1er mai 2006.
+\end{itemize}
+\begin{figure}[h] % h = here (placer l'image ici)
+    \centering
+    \includegraphics[width=0.2\textwidth]{ressources_rapport/tour_montravel.jpg}
+    \caption{Tour Montravel inaugurée en 1995 à Nouméa, abritant les coeurs des réseaux fixe et mobile et assurait ainsi la couverture téléphonique des Nouméens.}
+    \label{fig:exemple}
+\end{figure}
+\newpage
+
+\section{La direction des systèmes d'informations de l'OPT}
+\begin{figure}[h] % h = here (placer l'image ici)
+    \centering
+    \includegraphics[width=0.2\textwidth]{ressources_rapport/adrien_sales.jpg}
+\end{figure}
+Lors du stage, j'avais travaillé au sein de la DSI (direction des systèmes d'informations) de l'OPT. Adrien SALES (chef de bureau au sein de la DSI de l'OPT) était mon maître de stage et commanditaire du projet renouvellement front-end. C'était avec lui que passait les échanges et retours sur le projet pour le travailler et l'améliorer au fur à mesure.
+
+\vspace{1cm}
+\begin{figure}[h] % h = here (placer l'image ici)
+    \centering
+    \includegraphics[width=0.4\textwidth]{ressources_rapport/paroles_agent.jpg}
+    \caption{Miniature de "Paroles d'agent - Adrien SALES", qui a été publié le 19 février 2020 sur https://office.opt.nc/en/media/1125}
+    \label{fig:exemple}
+\end{figure}
+Son rôle consiste de copier les données entre les différents systèmes de l'OPT-NC vers d'autres systèmes (exemple : prendre les données de télécommunications et les verser dans un autre endroit pour pouvoir les exploiter). afin que ces données puissent être utilisés en interne, notamment pour développer des solutions informatiques.
+\newpage
+
+\section{Etat des lieux de l'OPT : forces et faiblesses}
+\begin{figure}[h] % h = here (placer l'image ici)
+    \centering
+    \includegraphics[width=0.2\textwidth]{ressources_rapport/forces.png}
+\end{figure}
+Parmi les forces : 
+\begin{itemize}
+    \item Une omniprésence sur le territoire calédonien (plus de 50 agences).
+    \item Une expertise technique interne pour offrir des solutions adaptées.
+    \item Des infrastructures modernes pour recevoir les clients et leur proposer les services de l'OPT (Boîtes postales, Conseillers, Guichets automatique de billets, Guichets spécialisés).
+\end{itemize}
+
+\vspace{1cm}
+\begin{figure}[h] % h = here (placer l'image ici)
+    \centering
+    \includegraphics[width=0.2\textwidth]{ressources_rapport/faiblesses.png}
+\end{figure}
+Parmi les faiblesses : 
+\begin{itemize}
+    \item Certaines applications sont vieillissantes (comme la recherche d'agence OPT où certaines informations ne sont plus à jour et l'interface n'est plus ergonomique pour le standard de nos jours).
+    \item Manque d'effectifs à la DSI de l'OPT pour combler le manque de compétences locales.
+    \item Etant le monopôle télécom, si jamais il y'a un gros problème technique à l'OPT, toute la Nouvelle-Calédonie est concernée.
+\end{itemize}
+
+% =====================
+\chapter{Renouvellement front-end de l'application web}
+\section{Apprentissage des pré-requis (Next.js et GitHub)}
+Avant d’entrer dans le développement de l'application, j’ai suivi une montée en compétence rapide sur Next.js, un framework gratuit et open source s'appuyant sur la bibliothèque JavaScript React et sur la technologie Node.js. Ce framework est optimisé pour le rendu côté serveur et l’optimisation SEO : 
+
+\vspace{1cm}
+\begin{figure}[h] % h = here (placer l'image ici)
+    \centering
+    \includegraphics[width=0.7\textwidth]{ressources_rapport/learn_next.JPG}
+    \caption{Screenshot du début du tutoriel aux bases de Next.js : https://nextjs.org/learn/dashboard-app/getting-started}
+    \label{fig:exemple}
+\end{figure}
+
+\vspace{1cm}
+J’ai également pris en main GitHub pour versionner et collaborer efficacement avec Adrien SALES. Lorsqu'un de nous deux devait faire part d'un problème ou d'une suggestion par rapport au projet, on passait par les issues GitHub, et même parfois par des Pull Requests si il fallait review du code avant de le push sur la branche main de l'application. La repo est publique : https://github.com/adriens/unc-temps-attente-nextjs
+
+\vspace{1cm}
+\begin{figure}[h] % h = here (placer l'image ici)
+    \centering
+    \includegraphics[width=0.7\textwidth]{ressources_rapport/extrait_issue_5.JPG}
+    \caption{Extrait de l'issue 5 : Feedback sur la v2 de l'application}
+    \label{fig:exemple}
+\end{figure}
+
+\begin{figure}[h] % h = here (placer l'image ici)
+    \centering
+    \includegraphics[width=0.7\textwidth]{ressources_rapport/extrait_pr_9.JPG}
+    \caption{Extrait de la Pull Request 9 pour ajouter la fonctionnalité de voir la liste déroulante de la recherche d'agences sur navigation clavier}
+    \label{fig:exemple}
+\end{figure}
+\newpage
+
+\section{Proposition d'idées pour moderniser l'application}
+En analysant l'application qui existait avant mon stage, voici ce que j'ai remarqué :
+\begin{itemize}
+    \item L'information prend du temps à être accédée. On doit scroller une sélection de communes pour cliquer sur une commune, et après rechercher la bonne agence en cliquant une deuxième fois, puis scroller les informations d'une agence.
+\end{itemize}
+\begin{figure}[h] % h = here (placer l'image ici)
+    \centering
+    \includegraphics[width=1\textwidth]{ressources_rapport/ancien_app_opt.JPG}
+    \caption{Ancienne application OPT Trouver une agence}
+    \label{fig:exemple}
+\end{figure}
+\vspace{1cm}
+
+\begin{figure}[h] % h = here (placer l'image ici)
+    \centering
+    \includegraphics[width=1\textwidth]{ressources_rapport/ancien_app_opt_noumea.JPG}
+    \caption{Nouméa selectionné}
+    \label{fig:exemple}
+\end{figure}
+\vspace{1cm}
+
+\begin{figure}[h] % h = here (placer l'image ici)
+    \centering
+    \includegraphics[width=1\textwidth]{ressources_rapport/ancien_app_opt_noumea_agence_principale.JPG}
+    \caption{Agence principale sélectionnée}
+    \label{fig:exemple}
+\end{figure}
+\vspace{2cm}
+Suite à cette analyse, voici mes premières idées pour moderniser l'application :
+\begin{itemize}
+    \item Demander la position de l'utilisateur pour localiser l'agence la plus proche de celui-ci.
+    \item La carte (sous React-Leaflet) sera centrée sur l'utilisateur au début pour faciliter ensuite la navigation autour.
+    \item Repenser l'interface pour la rendre simple, fluide et ergonomique.
+\end{itemize}
+
+\newpage
+\section{Développement et déploiement d'une première version}
+Une première version a été développée et déployée sur un environnement de test Vercel : https://unc-temps-attente-nextjs-v1.vercel.app
+Elle permettait déjà :
+\begin{itemize}
+    \item De localiser l’utilisateur puis d'afficher sa position par un point vert
+    \item D’afficher les agences OPT les plus proches en centrant la carte sur l'utilisateur
+    \item De consulter des métadonnées basiques
+\end{itemize}
+
+\begin{figure}[h] % h = here (placer l'image ici)
+    \centering
+    \includegraphics[width=1\textwidth]{ressources_rapport/app_opt_v1.JPG}
+    \caption{v1 de l'application avec Agence Nouméa Belle-vie sélectionné}
+    \label{fig:exemple}
+\end{figure}
+\vspace{1cm}
+Suite au déploiement, je fais une demande de review  à Adrien SALES via une issue dédiée pour, afin de récolter du feedback sur cette v1 pour affiner l'application : https://github.com/adriens/unc-temps-attente-nextjs/issues/4
+
+\begin{figure}[h] % h = here (placer l'image ici)
+    \centering
+    \includegraphics[width=1\textwidth]{ressources_rapport/extrait_issue_4.JPG}
+    \caption{Extrait de l'issue 4 concernant le feedback de la v1}
+    \label{fig:exemple}
+\end{figure}
+\newpage
+
+\section{Répondre aux besoins du commanditaire par une deuxième version}
+Après des échanges avec Adrien SALES sur la v1, la V2 (https://unc-temps-attente-nextjs-v2.vercel.app) a intégré :
+\begin{itemize}
+    \item Des métadonnées supplémentaires sur la sidebar pour enrichir les informations d'une agence (comme une adresse déduite par reverse geocoding).
+    \item Une barre de recherche qui centre sur l'agence recherchée lorsqu'on la sélectionne.
+\end{itemize}
+
+\begin{figure}[h] % h = here (placer l'image ici)
+    \centering
+    \includegraphics[width=1\textwidth]{ressources_rapport/app_opt_v2.JPG}
+    \caption{v2 de l'application avec Agence Nouméa Belle-vie sélectionné}
+    \label{fig:exemple}
+\end{figure}
+\vspace{8cm}
+Donc comme pour la v1, j'ai créé une issue dédiée pour obtenir du feedback sur cette v2 : https://github.com/adriens/unc-temps-attente-nextjs/issues/5
+
+\begin{figure}[h] % h = here (placer l'image ici)
+    \centering
+    \includegraphics[width=0.5\textwidth]{ressources_rapport/extrait_issue_5_2.JPG}
+    \caption{extrait de l'issue feedback v2 comportant de premiers retours (Revoir l'ergonomie de la carte et de la sidebar, expliciter la partie Services, enlever la partie temps d'attente}
+    \label{fig:exemple}
+\end{figure}
+\newpage
+
+\section{Peaufiner l'application pour un produit fini}
+L'issue 5 consistait à des retours pour les implémenter sous forme de "hotfixes" car les suggestions ou les corrections étaient des petites améliorations pour ajuster correctement ce qu'on cherche à faire avec l'application : la recherche d'agence de manière simple et ergonomique : https://github.com/adriens/unc-temps-attente-nextjs/pulls
+
+\vspace{1cm}
+Voici l'historique des hotfixes de cette v2 répertoriées dans les Pull Requests :
+\vspace{1cm}
+
+\begin{figure}[h] % h = here (placer l'image ici)
+    \centering
+    \includegraphics[width=0.7\textwidth]{ressources_rapport/extrait_pr_7.JPG}
+    \caption{Hotfix 1 : supprimer la partie temps d'attente. https://unc-temps-attente-nextjs-v2hf.vercel.app}
+    \label{fig:exemple}
+\end{figure}
+
+\begin{figure}[h] % h = here (placer l'image ici)
+    \centering
+    \includegraphics[width=0.7\textwidth]{ressources_rapport/extrait_pr_8.JPG}
+    \caption{Hotfix 2 : ajout de la navigation clavier pour la recherche d'agence, et des ajustements UX pour desktop et mobile. https://unc-temps-attente-nextjs-v2hf2.vercel.app}
+    \label{fig:exemple}
+\end{figure}
+
+\begin{figure}[h] % h = here (placer l'image ici)
+    \centering
+    \includegraphics[width=0.7\textwidth]{ressources_rapport/extrait_pr_9.JPG}
+    \caption{Hotfix 3 : Quand on descend/remonte dans le menu au clavier, la liste bouge désormais correctement pour ne plus rendre l'agence sélectionnée hors-champ. https://unc-temps-attente-nextjs-v2hf3.vercel.app}
+    \label{fig:exemple}
+\end{figure}
+
+\begin{figure}[h] % h = here (placer l'image ici)
+    \centering
+    \includegraphics[width=0.7\textwidth]{ressources_rapport/extrait_pr_12.JPG}
+    \caption{Hotfix 4 : Ajout de l'auto-focus sur la box de recherche d'agence. https://unc-temps-attente-nextjs-v2hf4.vercel.app}
+    \label{fig:exemple}
+\end{figure}
+
+% =====================
+\chapter{Conclusion}
+\section{Résultats du stage}
+L’application \textit{"L'OPT près de chez moi, trouver une agence"} est désormais plus moderne, plus rapide et adaptée aux usages mobiles. Grâce à une optimisation UI et UX, les utilisateurs peuvent facilement trouver une agence avec la position utilisateur et la recherche d'agence pour consulter ses informations. Elle a une adresse URL clean où celle-ci sera up-to-date à chaque push sur la branche main de la repo GitHub de l'application : https://unc-temps-attente-nextjs.vercel.app
+\begin{figure}[h] % h = here (placer l'image ici)
+    \centering
+    \includegraphics[width=1\textwidth]{ressources_rapport/app_opt.JPG}
+    \caption{Rendu final de l'application web sous desktop à l'issue de ce stage.}
+    \label{fig:exemple}
+\end{figure}
+\newpage
+
+\section{Perspectives}
+Une future évolution pourrait inclure :
+
+\vspace{1cm}
+\begin{figure}[h] % h = here (placer l'image ici)
+    \centering
+    \includegraphics[width=0.2\textwidth]{ressources_rapport/temps_trajet.png}
+    L’intégration des temps de trajet estimé d'une agence sélectionnée pour chaque mode de transport (à pied, en vélo, en voiture etc..).
+\end{figure}
+
+\vspace{1cm}
+\begin{figure}[h] % h = here (placer l'image ici)
+    \centering
+    \includegraphics[width=0.2\textwidth]{ressources_rapport/rdv.png}
+    L’ajout d’un module de prise de rendez-vous en ligne.
+\end{figure}
+
+\vspace{1cm}
+\begin{figure}[h] % h = here (placer l'image ici)
+    \centering
+    \includegraphics[width=0.2\textwidth]{ressources_rapport/offline.png}
+    Un mode hors ligne pour les zones à faible couverture.
+\end{figure}
+
+% =====================
+\chapter{Glossaire}
+\begin{description}
+    \item[Next.js :] Framework React avec rendu côté serveur.
+    \item[Leaflet :] Bibliothèque JavaScript pour cartes interactives.
+    \item[Reverse Geocoding :] Conversion de coordonnées GPS en adresse lisible.
+    \item[Vercel :] Plateforme de déploiement optimisée pour les projets JavaScript/React.
+    \item[API :] Interface de programmation permettant à des applications de communiquer.
+    \item[UI :] User Interface, l'interface utilisateur.
+    \item[UX :] User Experience, l'expérience utilisateur qui comprend l'ergonomie d'utilisation d'une application.
+    \item[Repo :] Terme utilisé pour un répertoire de projet GitHub.
+\end{description}
+
+% =====================
+% RÉSUMÉ FR + ABSTRACT EN
+\chapter*{Résumé / Abstract}
+\addcontentsline{toc}{chapter}{Résumé / Abstract}
+
+\section*{Résumé}
+Ce rapport retrace les deux mois de stage effectués au sein de la DSI de l’OPT-NC en tant que développeur web front-end.  
+L’objectif principal était la refonte de l’application \textit{"L’OPT près de chez moi"} pour la rendre plus moderne, ergonomique et adaptée aux usages mobiles.  
+Après une prise en main rapide des technologies Next.js, React et Leaflet, une première version a été développée puis améliorée en fonction des retours internes.  
+Les résultats sont positifs : l’application est plus performante, intuitive et maintenable.  
+Des perspectives d’évolution existent, notamment un temps de trajet estimé de l'agence selectionnée pour chaque mode de transport, ou même un mode hors-ligne pour les zones à faible couverture.
+
+\vspace{1cm}
+\textit{Mots-clefs : application web, OPT, Next.js, recherche agence}
+
+\section*{Abstract}
+This report covers a two-month internship carried out within the OPT-NC IT Department as a front-end web developer.  
+The main goal was to redesign the \textit{"L’OPT près de chez moi"} web application to make it more modern, user-friendly, and mobile-oriented.  
+After quickly mastering Next.js, React, and Leaflet, a first version was developed and then enhanced based on internal feedback.  
+The results are positive: the application is now faster, more intuitive, and easier to maintain.  
+Future improvements may include estimated travel time for each mode of transportation, or even an offline mode for areas with poor coverage.
+
+\vspace{1cm}
+\textit{Keywords : web application, OPT, Next.js, agency search}
+
+\end{document}
