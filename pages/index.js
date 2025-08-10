@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -12,7 +12,11 @@ export default function Home() {
   const [selectedAgence, setSelectedAgence] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [suggestions, setSuggestions] = useState([]);
+  const [selectedIndex, setSelectedIndex] = useState(-1);
+  const suggestionRefs = useRef([]);
   const [error, setError] = useState('');
+  const searchInputRef = useRef(null);
+
 
   function getDistance(lat1, lon1, lat2, lon2) {
     const R = 6371;
@@ -126,6 +130,7 @@ export default function Home() {
   const handleSearchChange = (e) => {
     const value = e.target.value;
     setSearchTerm(value);
+    setSelectedIndex(-1);
     if (value.length > 1) {
       const filtered = agences.filter((a) =>
         a.designation?.toLowerCase().includes(value.toLowerCase())
@@ -189,6 +194,25 @@ export default function Home() {
   
       fetchAdresse();
     }, [selectedAgence]);
+
+    useEffect(() => {
+      if (
+        selectedIndex >= 0 &&
+        suggestionRefs.current[selectedIndex]
+      ) {
+        suggestionRefs.current[selectedIndex].scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
+        });
+      }
+    }, [selectedIndex]);
+
+    useEffect(() => {
+      if (searchInputRef.current) {
+        searchInputRef.current.focus();
+      }
+    }, []);
+
 
   // 📞 Mapping des téléphones par agence
   const telephonesAgences = {
@@ -325,19 +349,41 @@ export default function Home() {
 
         <header className="search-header">
           <input
+            ref={searchInputRef}
             type="text"
-            placeholder="Rechercher une agence..."
+            className="search-input"
+            placeholder="Rechercher une agence OPT..."
             value={searchTerm}
             onChange={handleSearchChange}
-            onKeyDown={handleSearchKeyDown}
-            className="search-input"
+            onKeyDown={(e) => {
+              if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                setSelectedIndex((prev) => {
+                  const next = prev + 1;
+                  return next >= suggestions.length ? suggestions.length - 1 : next;
+                });
+              } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                setSelectedIndex((prev) => {
+                  const next = prev - 1;
+                  return next < 0 ? 0 : next;
+                });
+              } else if (e.key === 'Enter') {
+                e.preventDefault();
+                if (selectedIndex >= 0 && selectedIndex < suggestions.length) {
+                  handleAgenceSelect(suggestions[selectedIndex]);
+                }
+              }
+            }}
           />
           {suggestions.length > 0 && (
             <ul className="search-suggestions">
-              {suggestions.map((a) => (
+              {suggestions.map((a, index) => (
                 <li
                   key={a.idAgence}
-                  onClick={() => handleAgenceSelect(a)}
+                  className={index === selectedIndex ? 'active' : ''}
+                  onMouseDown={() => handleAgenceSelect(a)}
+                  ref={(el) => (suggestionRefs.current[index] = el)}
                 >
                   {a.designation}
                 </li>
@@ -356,12 +402,11 @@ export default function Home() {
                 <p><strong>Adresse : </strong><span>{adresse || "Chargement..."}</span><br/></p>
                 <p><strong>Tél : </strong><span>{telephonesAgences[selectedAgence.designation] || "Non disponible"}</span></p>
                 <p><strong>E-mail : </strong><span>{emailAgences[selectedAgence.designation] || "Non disponible"}</span></p>
-                <p><strong>Temps d'attente estimé : </strong>{selectedAgence.estimatedAvgWaitingTimeMs/1000}s</p>
 
                 <h2>Horaires</h2>
                 <p><strong>Lundi à Vendredi : </strong>07:45 - 15:30</p>
                 
-                <h2>Services (contacter l'agence pour plus d'infos)</h2>
+                <h2>Services possibles (contacter l'agence pour la disponibilité d'un service)</h2>
                 <p><strong>Boîtes postales</strong></p>
                 <p><strong>Conseillers</strong></p>
                 <p><strong>Guichets automatique de billets</strong></p>
