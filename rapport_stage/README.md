@@ -1,12 +1,27 @@
 # ℹ️ Comment compiler le rapport de stage LaTeX pour générer un pdf
 
-1️⃣ Avec [Overleaf](https://overleaf.com)
+## Avec TeX Live
 
-Créer un projet et importer rapport_stage.tex et le dossier ressources_rapport.
+1️⃣ Prérequis : 
 
-Overleaf compile automatiquement le .tex en PDF.
+- Latex :
+    Windows : [TeX Live](https://tug.org/texlive/acquire-netinstall.html)
+    Mac : [TeX Live](https://tug.org/mactex)
+    Linux : 
+    ```bash
+        sudo apt update
+        sudo apt install texlive-latex-extra
 
-Cliquer sur Download PDF pour le récupérer.
+2️⃣ Compiler :
 
-✅ Avantage : pas besoin d’installer quoi que ce soit.
-❌ Inconvénient : nécessite une connexion internet.
+- Ouvrir un terminal dans le dossier contenant le .tex : 
+    ```bash
+        pdflatex rapport_stage.tex
+        pdflatex rapport_stage.tex
+Exécuter la commande 2 fois pour générer la tables des matières
+
+- Lire : 
+    ```bash 
+    xdg-open rapport_stage.pdf
+
+
