@@ -1,7 +1,6 @@
 # ℹ️ Comment compiler le rapport de stage LaTeX pour générer un pdf
 
-1️⃣ Avec Overleaf 
-Aller sur [Overleaf](https://overleaf.com)
+1️⃣ Avec [Overleaf](https://overleaf.com)
 
 Créer un projet et importer rapport_stage.tex et le dossier ressources_rapport.
 
