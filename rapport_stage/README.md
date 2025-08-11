@@ -4,9 +4,9 @@
 
 1️⃣ Prérequis : 
 
-- Latex :
-    Windows : [TeX Live](https://tug.org/texlive/acquire-netinstall.html)
-    Mac : [TeX Live](https://tug.org/mactex)
+- Latex :\
+    Windows : [TeX Live](https://tug.org/texlive/acquire-netinstall.html)\
+    Mac : [TeX Live](https://tug.org/mactex)\
     Linux : 
     ```bash
         sudo apt update
