@@ -1,3 +1,40 @@
+# Installation et démarrage du projet
+
+Ce projet **Next.js** affiche les agences et leurs informations via l'API de l'OPT, avec recherche et géolocalisation.
+
+---
+
+##  Prérequis
+
+- [Node.js](https://nodejs.org) (version ≥ 14 recommandée)
+- [npm](https://www.npmjs.com/) (installé avec Node.js)
+
+---
+
+##  Installation
+
+1. Cloner le dépôt et s'y positionner :
+   ```bash
+   git clone https://github.com/adriens/unc-temps-attente-nextjs.git
+   cd unc-temps-attente-nextjs
+
+2. Installer les dépendances:
+   ```bash
+   npm install
+
+3. Ajouter une clé API pour accéder au portail OPT (via [Apigee](https://apigee-optnc-prd-api.apigee.io)) : 
+    Créer un fichier .env.local à la racine avec :
+   ```bash
+   API_KEY=TaCleAPI_GENEREE_sur_le_portail_APIGEE
+
+
+##  Démarrage en local
+1. Pour lancer le serveur de développement (hot-reload inclus) : 
+    ```bash
+    npm run dev
+
+2. Ouvre en suite ton navigateur sur : http://localhost:3000
+
 # ❔ A propos
 
 Chaque année, l'[Université de Nouvelle-Calédonie](https://unc.nc/) challenge ses étudiants

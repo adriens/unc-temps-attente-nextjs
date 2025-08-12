@@ -43,11 +43,11 @@
 
 % =====================
 % RÉSUMÉ FR + ABSTRACT EN
-\chapter*{Résumé / Abstract}
-\addcontentsline{toc}{chapter}{Résumé / Abstract}
+\chapter*{Résumé}
+\addcontentsline{toc}{chapter}{Résumé}
 
 \section*{Résumé}
-Ce rapport retrace les deux mois de stage effectués au sein de la DSI de l’OPT-NC en tant que développeur web front-end.  
+Ce rapport retrace les deux mois de stage effectués au sein de la section GLIA (Génie Logiciel Inter-Applicatif) de l’OPT-NC en tant que développeur web front-end.  
 L’objectif principal était la refonte de l’application \textit{"L’OPT près de chez moi"} pour la rendre plus moderne, ergonomique et adaptée aux usages mobiles.  
 Après une prise en main rapide des technologies Next.js, React et Leaflet, une première version a été développée puis améliorée en fonction des retours internes.  
 Les résultats sont positifs : l’application est plus performante, intuitive et maintenable.  
@@ -55,27 +55,6 @@ Des perspectives d’évolution existent, notamment un temps de trajet estimé d
 
 \vspace{1cm}
 \textit{Mots-clefs : application web, OPT, Next.js, recherche agence}
-
-\section*{Abstract}
-This report covers a two-month internship carried out within the OPT-NC IT Department as a front-end web developer.  
-The main goal was to redesign the \textit{"L’OPT près de chez moi"} web application to make it more modern, user-friendly, and mobile-oriented.  
-After quickly mastering Next.js, React, and Leaflet, a first version was developed and then enhanced based on internal feedback.  
-The results are positive: the application is now faster, more intuitive, and easier to maintain.  
-Future improvements may include estimated travel time for each mode of transportation, or even an offline mode for areas with poor coverage.
-
-\vspace{1cm}
-\textit{Keywords : web application, OPT, Next.js, agency search}
-
-% =====================
-% REMERCIEMENTS
-\chapter*{Remerciements}
-Loïc SALMON : Professeur tuteur de l'UNC
-
-\vspace{1cm}
-Claire LESCHI : Responsable pédagogique de la licence MIAGE
-
-\vspace{1cm}
-Adrien SALES : Maître de stage
 
 \newpage
 
@@ -90,17 +69,17 @@ Adrien SALES : Maître de stage
 J'ai décidé d'effectuer un stage de deux mois en développement web front-end au sein de la direction des systèmes d’information de l’OPT-NC. Ce stage avait pour objectif principal de contribuer à la modernisation d’une application web interne et publique : \textit{\href{https://www.opt.nc/service/l-opt-pres-de-chez-moi-trouver-une-agence}{"L'OPT près de chez moi, trouver une agence"}}.
 
 \vspace{1cm}
-Avant de m'intéresser à ce stage, j'avais auparavant contacté OPEN-NC (cluster des entreprises du développement numérique) début avril dans l'optique de faire un stage dans le développement web pour mettre en avant mes compétences dans ce domaine qui ont été forgées grâce à mon DUT MMI et ma Licence MIAGE. OPEN-NC a bel et bien partagé ma demande de recherche de stage à ses entreprises partenaires (plus de 90 entreprises), mais sans succès car je n'ai eu acune réponse de leur part.
+Avant de m'intéresser à ce stage, j'avais auparavant contacté OPEN-NC (cluster des entreprises du développement numérique) début avril dans l'optique de faire un stage dans le développement web pour mettre en avant mes compétences dans ce domaine qui ont été forgées grâce à mon DUT MMI et ma Licence MIAGE. OPEN-NC a bel et bien partagé ma demande de recherche de stage à ses entreprises partenaires (plus de 90 entreprises), mais sans succès car je n'ai eu aucune réponse de leur part.
 
 \vspace{1cm}
-J'ai donc signalé mon problème de recherche de stage à l'équipe pédagogique de la licence MIAGE. M. Loïc SALMON m'a répondu qu'il avait un contact de l'OPT qui pourrait prendre des stagiaires : M. Adrien SALES. Par conséquent, je lui avais directement envoyé mon CV et il m'a pris en tant que stagiaire en développement web front-end.
+J'ai donc signalé ma difficulté à trouver un stage à l'équipe pédagogique de la licence MIAGE. M. Loïc SALMON m'a répondu qu'il avait un contact de l'OPT qui pourrait prendre des stagiaires : M. Adrien SALES. Par conséquent, je lui avais directement envoyé mon CV et il m'a pris en tant que stagiaire en développement web front-end.
 
 \vspace{1cm}
 Mon stage était d'une durée de 8 semaines, du 1er Juillet 2025 jusqu'au 1er Septembre 2025. Il a été réalisé en distanciel car manque de poste sur place, donc on a utilisé LinkedIn et GitHub pour communiquer.
 
 
 \section{L'OPT en bref}
-L’Office des Postes et Télécommunications de Nouvelle-Calédonie (OPT-NC) est un établissement public à caractère industriel et commercial fondé en décembre 1956, puis mis en service le 1er janvier 1958. C'est l’acteur principal des services postaux, bancaires et télécoms sur le territoire calédonien. Fort de son statut de monopôle sur certaines activités stratégiques, il joue un rôle essentiel dans la gestion et l'entretien du réseau calédonien.
+\cite{blog_opt} L’Office des Postes et Télécommunications de Nouvelle-Calédonie (OPT-NC) est un établissement public à caractère industriel et commercial fondé en décembre 1956, puis mis en service le 1er janvier 1958. C'est l’acteur principal des services postaux, bancaires et télécoms sur le territoire calédonien. Fort de son statut de monopôle sur certaines activités stratégiques, il joue un rôle essentiel dans la gestion et l'entretien du réseau calédonien.
 
 \vspace{1cm}
 
@@ -112,7 +91,7 @@ L’Office des Postes et Télécommunications de Nouvelle-Calédonie (OPT-NC) es
 \newpage
 
 \section{Problématique et missions}
-L’application \textit{"L'OPT près de chez moi, trouver une agence"} permet aux usagers de localiser les agences OPT et de consulter leurs informations. Cependant, son interface front-end, vieillissante, nécessitait une refonte pour améliorer l’expérience utilisateur afin d'accéder à l'information souhaitée rapidement. On peut donc ce poser cette question :
+L’application \textit{"L'OPT près de chez moi, trouver une agence"} permet aux usagers de localiser les agences OPT et de consulter leurs informations. Cependant, son interface front-end, vieillissante, nécessitait une refonte pour améliorer l’expérience utilisateur afin d'accéder à l'information souhaitée rapidement. On peut donc se poser la question suivante :
 
 \vspace{1cm}
 
@@ -172,12 +151,14 @@ Les domaines d'activités de l'OPT-NC sont essentiels au réseau de communicatio
 \end{figure}
 \newpage
 
-\section{La direction des systèmes d'informations de l'OPT}
+\section{La section GLIA de l'OPT}
 \begin{figure}[h] % h = here (placer l'image ici)
     \centering
     \includegraphics[width=0.2\textwidth]{ressources_rapport/adrien_sales.jpg}
 \end{figure}
-Lors du stage, j'avais travaillé au sein de la DSI (direction des systèmes d'informations) de l'OPT. Adrien SALES (chef de bureau au sein de la DSI de l'OPT) était mon maître de stage et commanditaire du projet renouvellement front-end. C'était avec lui que passait les échanges et retours sur le projet pour le travailler et l'améliorer au fur à mesure.
+Lors du stage, j'ai travaillé au sein de la section GLIA (Génie Logiciel Inter-Applicatif) de l'OPT. Adrien SALES (chef de section) était mon maître de stage et commanditaire du projet renouvellement front-end. C'était avec lui que passait les échanges et retours sur le projet pour le travailler et l'améliorer au fur à mesure.
+
+\cite{paroles_agent}
 
 \vspace{1cm}
 \begin{figure}[h] % h = here (placer l'image ici)
@@ -185,7 +166,7 @@ Lors du stage, j'avais travaillé au sein de la DSI (direction des systèmes d'i
     \includegraphics[width=0.4\textwidth]{ressources_rapport/paroles_agent.jpg}
     \caption{Miniature de "Paroles d'agent - Adrien SALES", qui a été publié le 19 février 2020 sur \href{https://www.youtube.com/watch?v=g2JuEcwPvgE}{https://www.youtube.com/watch?v=g2JuEcwPvgE}}
 \end{figure}
-Son rôle consiste de copier les données entre les différents systèmes de l'OPT-NC vers d'autres systèmes (exemple : prendre les données de télécommunications et les verser dans un autre endroit pour pouvoir les exploiter). afin que ces données puissent être utilisées en interne, notamment pour développer des solutions informatiques.
+Son rôle consiste à copier les données entre les différents systèmes de l'OPT-NC vers d'autres systèmes (exemple : prendre les données de télécommunications et les verser dans un autre endroit pour pouvoir les exploiter). afin que ces données puissent être utilisées en interne, notamment \cite{serie_articles} pour développer des solutions informatiques.
 \newpage
 
 \section{Etat des lieux de l'OPT : forces et faiblesses}
@@ -213,7 +194,7 @@ Parmi les faiblesses :
 % =====================
 \chapter{Renouvellement front-end de l'application web}
 \section{Apprentissage des pré-requis (Next.js et GitHub)}
-Avant d’entrer dans le développement de l'application, j’ai suivi une montée en compétence rapide sur Next.js, un framework open source s'appuyant sur la bibliothèque JavaScript React et sur la technologie Node.js. Ce framework est optimisé pour le rendu côté serveur et l’optimisation SEO : 
+Avant d’entrer dans le développement de l'application, j’ai suivi une \cite{tuto_next} montée en compétence rapide sur Next.js, un framework open source s'appuyant sur la bibliothèque JavaScript React et sur la technologie Node.js. Ce framework est optimisé pour le rendu côté serveur et l’optimisation SEO : 
 
 \vspace{1cm}
 \begin{figure}[h] % h = here (placer l'image ici)
@@ -223,7 +204,7 @@ Avant d’entrer dans le développement de l'application, j’ai suivi une mont�
 \end{figure}
 
 \vspace{1cm}
-J’ai également pris en main GitHub pour versionner et collaborer efficacement avec Adrien SALES. Lorsqu'un de nous deux devait faire part d'un problème ou d'une suggestion par rapport au projet, on passait par les issues GitHub, et même parfois par des Pull Requests si il fallait review du code avant de le push sur la branche main de l'application. La repo est publique : \href{https://github.com/adriens/unc-temps-attente-nextjs}{https://github.com/adriens/unc-temps-attente-nextjs}
+J’ai également pris en main GitHub pour versionner et collaborer efficacement avec Adrien SALES. Lorsqu'un de nous deux devait faire part d'un problème ou d'une suggestion par rapport au projet, on passait par les issues GitHub, et même parfois par des Pull Requests si il fallait review du code avant de le push sur la branche main de l'application. \cite{repo} La repo est publique : \href{https://github.com/adriens/unc-temps-attente-nextjs}{https://github.com/adriens/unc-temps-attente-nextjs}
 
 \vspace{1cm}
 \begin{figure}[h] % h = here (placer l'image ici)
@@ -273,18 +254,19 @@ Suite à cette analyse, voici mes premières idées pour moderniser l'applicatio
 
 \newpage
 
-\section{Pertinence d'utiliser Next.js, Vercel et le portail d'API APIGEE de l'OPT}
-Vu qu'il fallait que je modernise l'application pour qu'elle soit simple et fluide d'utilisation et que je puisse avoir du feedback dessus, il me paraissait pertinent d'utiliser ces 3 technologies :
-\vspace{1cm}
+\section{Pourquoi utiliser Next.js, Vercel et le portail d'API APIGEE de l'OPT}
+Vu qu'il fallait que je modernise l'application pour qu'elle soit simple et fluide d'utilisation et que je puisse avoir du feedback dessus, Adrien SALES m'avait explicité d'utiliser ces 3 technologies :
+\vspace{0.5cm}
 \begin{itemize}
-    \item \textbf{Next.js :} Ce framework basé sur React gère éfficacement le rendu côté serveur, ce qui améliore considérablement le temps de chargement des pages et le référencement SEO. Next.js a également un système de routage basé sur le système de fichiers qui facilite la création de pages, donc le développeur peut se concentrer sur l'UI et l'UX.
-    \vspace{1cm}
-    \item \textbf{Vercel :} Pour lancer la première version de l'application de manière simple et efficace, le déploiement sur Vercel est pertinent puisque c'est une plateforme cloud et gratuit nécessitant juste une configuration minimale et une repo GitHub. A chaque push sur la repo associée au projet Vercel, un déploiement s'effectue automatiquement pour que Adrien SALES puisse suivre l'avancée du projet et que j'obtienne ses retours. De plus, Vercel est vivement recommandé par le tutoriel Next.js : \href{https://nextjs.org/learn/pages-router/deploying-nextjs-app}{https://nextjs.org/learn/pages-router/deploying-nextjs-app}
-    \vspace{1cm}
-    \item \textbf{\href{https://apigee-optnc-prd-api.apigee.io}{Portail API APIGEE de l'OPT :}} Pour afficher les agences, les positionner correctement sur la carte et récupérer certaines métadonnées pour les afficher à l'utilisateur, Adrien SALES m'a vivement recommandé de passer par le portail API public de l'OPT. Donc pour comprendre comment l'utiliser, je suis passé par sa série d'articles qui explique cela : \href{https://dev.to/adriens/series/21192}{https://dev.to/adriens/series/21192}
-    On crée un compte sur le portail, puis dans apps (en cliquant en haut à droite sur son e-mail), on crée une nouvelle application qui permettra de choisir quelles APIs peuvent être appelés, et générer une clé API pour autoriser le traitement de données nécessaire.
+    \item \textbf{Next.js :} Ce framework basé sur React gère efficacement le rendu côté serveur, ce qui améliore considérablement le temps de chargement des pages et le référencement SEO. Next.js a également un système de routage basé sur le système de fichiers qui facilite la création de pages, ce qui permet au développeur de se concentrer sur l'UI et l'UX.
+    \vspace{0.5cm}
+    \item \textbf{Vercel :} Pour lancer la première version de l'application de manière simple et efficace, le \cite{deploy_vercel} déploiement sur Vercel est pertinent puisque c'est une plateforme cloud et gratuit nécessitant juste une configuration minimale et une repo GitHub. À chaque push sur la repo associée au projet Vercel, un déploiement s'effectue automatiquement pour que Adrien SALES puisse suivre l'avancée du projet et que j'obtienne ses retours. De plus, Vercel est vivement recommandé par le tutoriel Next.js : \href{https://nextjs.org/learn/pages-router/deploying-nextjs-app}{https://nextjs.org/learn/pages-router/deploying-nextjs-app}
+    \vspace{0.5cm}
+    \item \textbf{\href{https://apigee-optnc-prd-api.apigee.io}{Portail API APIGEE de l'OPT :}} \cite{comprendre_apigee} APIGEE est la plate-forme native de gestion des API de Google Cloud pour créer, gérer et sécuriser des API. Elle propose des proxys d'API afin de créer une interface fiable et mettre à disposition des APIs publiques. Pour afficher les agences, les positionner correctement sur la carte et récupérer certaines métadonnées pour les afficher à l'utilisateur, le sujet du stage disait de passer par le portail API public de l'OPT. Pour comprendre comment l'utiliser, je me suis appuyé sur cet \cite{apigee} article : \href{https://dev.to/optnc/apigee-101-onboarding-authentication-1ghl}{https://dev.to/optnc/apigee-101-onboarding-authentication-1ghl}
+    \cite{apigee_yt} On crée un compte sur le portail, puis dans apps (en cliquant en haut à droite sur son e-mail), on crée une nouvelle application qui permettra de choisir quelles APIs peuvent être appelées, et générer une clé API pour autoriser le traitement de données nécessaire.
 \end{itemize}
-
+\vspace{0.5cm}
+Ces trois technologies sont parfaites pour le stage, car elles couvrent la chaîne de développement et production de l'application. Next.js et APIGEE permettent de récupérer les données en temps réel et de les afficher sous forme de carte interactive dans une interface moderne et performante, et Vercel est idéale pour un stage car elle met cette interface à disposition grâce un flux de déploiement fluide depuis GitHub.
 
 \newpage
 
@@ -377,7 +359,7 @@ L’application \textit{"L'OPT près de chez moi, trouver une agence"} est déso
 \newpage
 
 \section{Perspectives}
-Une future évolution pourrait inclure :
+Les évolutions futures pourraient inclure :
 
 \vspace{1cm}
 \begin{figure}[h] % h = here (placer l'image ici)
@@ -413,12 +395,80 @@ Une future évolution pourrait inclure :
     \item[Repo :] Terme utilisé pour un répertoire de projet GitHub.
     \item[SEO :] Search Engine Optimization, c'est l'ensemble des techniques qui permettent à une page web d'être mieux référencée parmi les résultats d'un moteur de recherche.
 \end{description}
+\newpage
 
 % =====================
-\chapter{Ressources}
-\begin{description}
-    \item[Série d'articles OPT-NC :] \href{https://dev.to/adriens/series/18414}{https://dev.to/adriens/series/18414}
-    \item[Blog de l'OPT-NC :] \href{https://dev.to/optnc}{https://dev.to/optnc}
-\end{description}
+\renewcommand{\bibname}{Ressources}
+\addcontentsline{toc}{chapter}{Ressources}
+\begin{thebibliography}{9}
+
+\bibitem{blog_opt}
+Blog Dev.to de l'OPT-NC : 
+\url{https://dev.to/optnc}
+\vspace{0.5cm}
+
+\bibitem{paroles_agent}
+Vidéo YouTube, \textit{Paroles d'agent - Adrien SALES} :
+\url{https://www.youtube.com/watch?v=g2JuEcwPvgE}
+\vspace{0.5cm}
+
+\bibitem{serie_articles}
+Série d'articles Dev.to OPT, Adrien SALES :
+\url{https://dev.to/adriens/series/18414}
+\vspace{0.5cm}
+
+\bibitem{tuto_next}
+Tutoriel Next.js, \textit{Getting started} :
+\url{https://nextjs.org/learn/dashboard-app/getting-started}
+\vspace{0.5cm}
+
+\bibitem{repo}
+Répertoire GitHub public du projet :
+\url{https://github.com/adriens/unc-temps-attente-nextjs}
+\vspace{0.5cm}
+
+\bibitem{deploy_vercel}
+Tutoriel déploiement Vercel, Next.js,  \textit{Deploying Your Next.js App} :
+\url{https://nextjs.org/learn/pages-router/deploying-nextjs-app}
+\vspace{0.5cm}
+
+\bibitem{comprendre_apigee}
+Article Dev.to OPT, Adrien SALES,  \textit{Get started with Apigee Management} :
+\url{https://dev.to/optnc/get-started-with-apigee-management-55dg}
+\vspace{0.5cm}
+
+
+\bibitem{apigee}
+Article Dev.to OPT, Adrien SALES, \textit{APIGEE
+101: onboarding and authentication} :
+\url{https://dev.to/optnc/apigee-101-onboarding-authentication-1ghl}
+\vspace{0.5cm}
+
+\bibitem{apigee_yt}
+Vidéo YouTube de l'article APIGEE
+101: onboarding and authentication, \textit{APIGEE OPT - onboarding portail} :
+\url{https://www.youtube.com/watch?v=L56z2Vkht5E}
+\vspace{0.5cm}
+
+\end{thebibliography}
+\newpage
+
+% =====================
+% REMERCIEMENTS
+\chapter*{Remerciements}
+\addcontentsline{toc}{chapter}{Remerciements}
+
+\begin{flushleft}
+Je tiens à exprimer ma sincère gratitude à l'ensemble des personnes qui ont contribué au bon déroulement de mon stage et à l'élaboration de ce rapport.
+
+\vspace{1cm}
+Tout d’abord, je remercie \textbf{M. Loïc SALMON}, professeur tuteur à l’Université de la Nouvelle-Calédonie, pour son accompagnement, et m'avoir mis en contact avec l'OPT pour trouver le stage.
+
+\vspace{1cm}
+Mes remerciements s’adressent également à \textbf{Mme Claire LESCHI}, responsable pédagogique de la licence MIAGE, pour sa disponibilité et son implication dans l’encadrement global de notre formation.
+
+\vspace{1cm}
+Enfin, je souhaite également remercier chaleureusement \textbf{M. Adrien SALES}, mon maître de stage à l’OPT, pour son accueil, sa confiance et la qualité de ses orientations techniques, qui m’ont permis de progresser significativement sur le plan professionnel et personnel.
+\end{flushleft}
 
 \end{document}
