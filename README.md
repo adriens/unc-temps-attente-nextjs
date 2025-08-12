@@ -22,11 +22,10 @@ Ce projet **Next.js** affiche les agences et leurs informations via l'API de l'O
    ```bash
    npm install
 
-3. Ajouter une clé API pour accéder au portail OPT (via [Apigee](https://apigee-optnc-prd-api.apigee.io)) : 
+3. Ajouter une clé API pour accéder au portail OPT (via [Apigee](https://apigee-optnc-prd-api.apigee.io)) :\
     Créer un fichier .env.local à la racine avec :
    ```bash
    API_KEY=TaCleAPI_GENEREE_sur_le_portail_APIGEE
-
 
 ##  Démarrage en local
 1. Pour lancer le serveur de développement (hot-reload inclus) : 
