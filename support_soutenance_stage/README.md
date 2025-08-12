@@ -10,7 +10,7 @@
       cd unc-temps-attente-nextjs/support_soutenance_stage
       npm install
       npm start
-Puis sur un navigateur : http://localhost:8000\
+Puis sur un navigateur : http://localhost:8000
 
 ##  Commandes : 
   Flèche gauche : se déplacer à gauche\
