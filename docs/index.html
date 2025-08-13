@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Présentation de stage - Quoc-Kim BUI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Reveal.js core CSS -->
+  <link rel="stylesheet" href="dist/reveal.css">
+  <!-- Theme -->
+  <link rel="stylesheet" href="dist/theme/league.css" id="theme">
+
+  <!-- Optional code syntax highlighting -->
+  <link rel="stylesheet" href="plugin/highlight/monokai.css">
+
+  <style>
+    .image-right {
+      float: right;
+      width: 40%;
+      margin-left: 20px;
+      border-radius: 8px;
+    }
+    .icon {
+      width : 10%;
+      height : 10%;
+    }
+    .image-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+    .image-center img {
+      display: block;
+      margin: 0 auto;
+    }
+    h1, h2, h3 {
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    }
+    .reveal section {
+      display: flex !important;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: clamp(16px, 2vw, 28px); /* s'adapte à la taille de l'écran */
+    }
+
+    .reveal .slide-number {
+      bottom: 10px !important;
+      right: 20px !important;
+      left: auto !important;
+      top: auto !important;
+      font-size: 60px;
+      background: rgba(0,0,0,0.5);
+      padding: 4px 8px;
+      border-radius: 4px;
+      color: white;
+    }
+
+    .image-row {
+      display: flex;
+      justify-content: space-between; 
+    }
+
+    #timer-bar {
+      position: fixed;
+      bottom: 3px; 
+      right: 0;
+      height: 15px;
+      background: red;
+      transform-origin: left;
+      transition: transform 1s linear;
+      z-index: 30;
+    }
+  </style>
+</head>
+<body>
+
+<div class="reveal">
+<div class="slides">
+
+<!-- Page de garde -->
+<section data-background="ressources_support/logo_opt.jpg" data-background-opacity="0.2">
+  <h1>Soutenance de stage</h1>
+  <h2>Refonte front-end application web "L'OPT près de chez, trouver une agence</h2>
+  <h3>Développeur Web Front-end</h3>
+  <p><strong>Quoc-Kim BUI</strong> | Licence Informatique MIAGE</p>
+  <p>Stage OPT : 01/07/2025 – 01/09/2025</p>
+</section>
+
+<!-- Introduction -->
+<section>
+  <h2>Introduction</h2>
+  <ul>
+    <li class="fragment">Stage en développement web front-end à l'OPT-NC</li>
+    <li class="fragment">Objectif : Moderniser "L’OPT près de chez moi"</li>
+    <li class="fragment">Durée : 8 semaines, en distanciel</li>
+    <li class="fragment">Stack : Next.js, Vercel, API APIGEE, GitHub</li>
+  </ul>
+</section>
+
+<!-- Sommaire -->
+<section>
+  <h2>Sommaire</h2>
+  <ul>
+    <li>Présentation de l'OPT</li>
+    <li>Organisation du stage</li>
+    <li>Renouvellement front-end de l'application web</li>
+    <li>Conclusion</li>
+    <li>Remerciements</li>
+    <li>Démo</li>
+  </ul>
+</section>
+
+<!-- Présentation de l'OPT -->
+<section data-background="ressources_support/tour_montravel.jpg" data-background-size="cover" data-background-opacity="0.3">
+	<h2>Présentation de l'OPT</h2>
+	<ul>
+		<li class="fragment">Acteur clé du réseau postal, bancaire et télécom en NC depuis 1956</li>
+		<li class="fragment">Plus de 50 agences sur le territoire</li>
+	</ul>
+  	<p class="fragment">Domaines d'activités :
+		<ul>
+			<li class="fragment">Poste</li>
+			<li class="fragment">Services financiers</li>
+			<li class="fragment">Télécommunications</li>
+			<li class="fragment">Annuaire de renseignement 1012</li>
+			<li class="fragment">Accès à Internet</li>
+			<li class="fragment">Gestion des noms de domaine .nc</li>
+		</ul>
+	</p>
+</section>
+
+<!-- Organisation du stage -->
+<section class="image-center">
+  <h2>Organisation du stage</h2>
+  <img src="ressources_support/adrien_sales.jpg">
+  <ul>
+    <li class="fragment">Distanciel</li>
+    <li class="fragment">Chef de section GLIA : Adrien SALES</li>
+	  <li class="fragment">LinkedIn et GitHub</li>
+    <li class="fragment">Mission : modernisation front-end de l'application web "L'OPT près de chez moi, trouver une agence"</li>
+  </ul>
+</section>
+
+<!-- Projet -->
+<section>
+  <h2>Projet : Renouvellement front-end de l'application web</h2>
+  <a href = "https://www.opt.nc/service/l-opt-pres-de-chez-moi-trouver-une-agence"><img src="ressources_support/ancien_app_opt.JPG" class="image-center" width="100%"></a>
+  <ul>
+    <li class="fragment">Améliorer l'ergonomie</li>
+    <li class="fragment">Accès rapide aux informations</li>
+    <li class="fragment">Compatibilité mobile</li>
+  </ul>
+</section>
+
+<!-- Projet - Stack -->
+<section>
+  <h2>Projet : Renouvellement front-end de l'application web</h2>
+  <h3>Stack</h3>
+    <div>
+      <img src="ressources_support/nextjs_icon.png" class = "icon">
+      <img src="ressources_support/vercel_icon.png" class = "icon">
+      <img src="ressources_support/apigee_icon.png" class = "icon">
+      <img src="ressources_support/github_icon.png" class = "icon">
+    </div>
+</section>
+
+<!-- Projet - propositions -->
+<section>
+  <h2>Projet : Renouvellement front-end de l'application web</h2>
+  <h3>Propositions d'idées pour moderniser l'application</h3>
+  <img src="ressources_support/app_web.png" class = "icon">
+  <ul>
+    <li class="fragment">Géolocalisation utilisateur</li>
+    <li class="fragment">Carte auto-centrée utilisateur</li>
+    <li class="fragment">Refonte UI et UX moderne</li>
+  </ul>
+</section>
+
+<!-- Projet - versions -->
+<section>
+  <h2>Projet : Renouvellement front-end de l'application web</h2>
+  <h3>Développement et déploiement de la première version</h3>
+  <a href="https://unc-temps-attente-nextjs-v1.vercel.app"><img src="ressources_support/app_opt_v1.JPG"></a>
+</section>
+
+<section>
+  <h2>Projet : Renouvellement front-end de l'application web</h2>
+  <h3>Répondre aux besoins du commanditaire par une deuxième version</h3>
+  <a href="https://unc-temps-attente-nextjs-v2.vercel.app"><img src="ressources_support/app_opt_v2.JPG"></a>
+</section>
+
+<section>
+  <h2>Projet : Renouvellement front-end de l'application web</h2>
+  <h3>Peaufiner l'application pour un produit fini</h3>
+  <a href="https://unc-temps-attente-nextjs-v2hf.vercel.app">Hotfix 1 : temps d'attente supprimé</a>
+  <a href="https://unc-temps-attente-nextjs-v2hf2.vercel.app">Hotfix 2 : ajout navigation clavier et ajustements UX desktop/mobile</a>
+  <a href="https://unc-temps-attente-nextjs-v2hf3.vercel.app">Hotfix 3 : visibilité menu déroulant recherche agence</a>
+  <a href="https://unc-temps-attente-nextjs-v2hf4.vercel.app">Hotfix 4 : ajout auto-focus box recherche agence</a>
+</section>
+
+<!-- Conclusion -->
+<section data-background="ressources_support/app_opt.JPG" data-background-size="contain">
+  <a href = "https://unc-temps-attente-nextjs.vercel.app"><h2 style="color : black;">Résultat final</h2>
+  <p style="color: black; background: rgba(255,255,255,0.5); padding: 10px; border-radius: 8px;">
+    Application moderne, fluide et adaptée mobile
+  </p>
+  </a> 
+</section>
+
+
+<!-- Perspectives -->
+<section>
+  <h2>Perspectives</h2>
+  <img src="ressources_support/perspectives.png" class = "icon">
+  <ul>
+    <li class="fragment">Temps de trajet estimé</li>
+    <li class="fragment">Prise de rendez-vous en ligne</li>
+    <li class="fragment">Mode hors-ligne</li>
+  </ul>
+  <div>
+    <img src="ressources_support/temps_trajet.png" class = "icon">
+    <img src="ressources_support/rdv.png" class = "icon">
+    <img src="ressources_support/offline.png" class = "icon">
+  </div>
+</section>
+
+<!-- Remerciements -->
+<section>
+  <h2>Remerciements</h2>
+  <ul>
+    <li class="fragment">Loïc SALMON – Professeur tuteur</li>
+    <li class="fragment">Claire LESCHI – Responsable pédagogique</li>
+    <li class="fragment">Adrien SALES – Maître de stage</li>
+  </ul>
+</section>
+
+<!-- Démo -->
+<section data-background="ressources_support/app_opt.jpg" data-background-opacity="0.2">
+  <h2>Démo</h2>
+  <a href="https://github.com/adriens/unc-temps-attente-nextjs">Repo GitHub</a>
+  <a href="https://unc-temps-attente-nextjs.vercel.app">Accès à l'application</a>
+</section>
+
+</div>
+</div>
+<div id="timer-bar"></div>
+<!-- Script pour la barre chronométrée 15 minutes -->
+<script>
+  const totalSeconds = 15 * 60;
+  let elapsed = 0;
+
+  const timerBar = document.getElementById('timer-bar');
+
+  function updateTimerBar() {
+    const remainingRatio = Math.max(0, (totalSeconds - elapsed) / totalSeconds);
+    // On réduit avec transform.scaleX
+    timerBar.style.transform = `scaleX(${remainingRatio})`;
+  }
+
+  // Largeur initiale
+  timerBar.style.width = "100%";
+  updateTimerBar();
+
+  // Décrément chaque seconde
+  const interval = setInterval(() => {
+    elapsed++;
+    updateTimerBar();
+    if (elapsed >= totalSeconds) {
+      clearInterval(interval);
+      timerBar.style.background = 'gray';
+    }
+  }, 1000);
+</script>
+
+
+<script src="dist/reveal.js"></script>
+<script src="plugin/notes/notes.js"></script>
+<script src="plugin/markdown/markdown.js"></script>
+<script src="plugin/highlight/highlight.js"></script>
+
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: true,
+    transition: 'slide',
+    slideNumber: 'c/t', // c = current, t = total
+    showSlideNumber: 'all', // affiche sur toutes les slides
+    // position forcée en bas à droite
+    slideNumberFormatter: function(current, total) {
+        return current + ' / ' + total;
+    },
+    plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+  });
+</script>
+
+</body>
+</html>
