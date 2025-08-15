@@ -213,6 +213,55 @@ export default function Home() {
       }
     }, []);
 
+  const getOpeningStatus = () => {
+    const openHour = 7;
+    const openMinute = 45;
+    const closeHour = 15;
+    const closeMinute = 30;
+
+    const now = new Date();
+    const todayOpen = new Date();
+    todayOpen.setHours(openHour, openMinute, 0, 0);
+
+    const todayClose = new Date();
+    todayClose.setHours(closeHour, closeMinute, 0, 0);
+
+    // Avant ouverture
+    if (now < todayOpen) {
+      const diffMs = todayOpen - now;
+      const diffMinutes = Math.floor(diffMs / 60000);
+      let message = "";
+      if (diffMinutes < 60) {
+        message = `Ouvre dans ${diffMinutes} min`;
+      } else {
+        const hours = Math.floor(diffMinutes / 60);
+        const minutes = diffMinutes % 60;
+        message = `Ouvre dans ${hours}h${minutes > 0 ? ` ${minutes}min` : ''}`;
+      }
+      return { text: message, color: "red" };
+    }
+
+    // Pendant ouverture
+    else if (now >= todayOpen && now < todayClose) {
+      const diffMs = todayClose - now;
+      const diffMinutes = Math.floor(diffMs / 60000);
+
+      if (diffMinutes <= 120) {
+        // ≤ 2 heures avant fermeture
+        if (diffMinutes < 60) {
+          return { text: `Ferme dans ${diffMinutes} min`, color: "orange" };
+        } else {
+          return { text: `Ferme dans ${Math.floor(diffMinutes / 60)}h${diffMinutes % 60 > 0 ? ` ${diffMinutes % 60}min` : ''}`, color: "orange" };
+        }
+      }
+      return { text: "Ouvert", color: "green" };
+    }
+
+    // Après fermeture
+    else {
+      return { text: `Fermé - ouvre demain à ${openHour}h${openMinute.toString().padStart(2, '0')}`, color: "red" };
+    }
+  };
 
   // 📞 Mapping des téléphones par agence
   const telephonesAgences = {
@@ -405,6 +454,12 @@ export default function Home() {
 
                 <h2>Horaires</h2>
                 <p><strong>Lundi à Vendredi : </strong>07:45 - 15:30</p>
+                {(() => {
+                  const status = getOpeningStatus();
+                  return status.text ? (
+                    <p style={{ color: status.color, fontStyle: 'italic' }}><strong>{status.text}</strong></p>
+                  ) : null;
+                })()}
                 
                 <h2>Services possibles (contacter l'agence pour la disponibilité d'un service)</h2>
                 <p><strong>Boîtes postales</strong></p>
