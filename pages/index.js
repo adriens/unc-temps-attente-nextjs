@@ -226,6 +226,13 @@ export default function Home() {
     const todayClose = new Date();
     todayClose.setHours(closeHour, closeMinute, 0, 0);
 
+    const day = now.getUTCDay();
+
+    // Fermeture totale le week-end
+    if (day === 0 || day === 6) {
+      return { text: "Fermé (week-end)", color: "red" };
+    }
+
     // Avant ouverture
     if (now < todayOpen) {
       const diffMs = todayOpen - now;
